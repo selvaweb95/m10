@@ -27,17 +27,17 @@ app.use('/uploads',express.static(path.join('uploads')))
 
 
 
-
-app.use('/customer',customerRouter);
-app.use('/auth',authRouter);
-app.get('/',(req,res)=>{
-    res.send("server is runing");
-})
-app.use(verifyToken,isAdmin);
 app.use('/category',verifyToken,isAdmin,categoryRouter);
 app.use('/brand',verifyToken,isAdmin,brandRouter);
 app.use('/product',verifyToken,isAdmin,productRouter);
 app.use('/orders',verifyToken,isAdmin,orderRouter)
+app.use('/customer',customerRouter);
+app.use('/auth',authRouter);
+app.use(verifyToken,isAdmin);
+app.get('/',(req,res)=>{
+    res.send("server is runing");
+})
+
 
 async function connectDB(){
     // mongodb+srv://selvaweb95:8mOqex2oeyfhjIfW@cluster0.rtwa8.mongodb.net/
