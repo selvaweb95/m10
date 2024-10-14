@@ -41,7 +41,7 @@ app.get('/',(req,res)=>{
 
 async function connectDB(){
     // mongodb+srv://selvaweb95:8mOqex2oeyfhjIfW@cluster0.rtwa8.mongodb.net/
-    // use env file
+    // use env file will be added for secrity purpose
     await mongoose.connect('mongodb+srv://selvaweb95:8mOqex2oeyfhjIfW@cluster0.rtwa8.mongodb.net/')
 //    await mongoose.connect('mongodb://localhost:27017',{
 //         dbName:'e-com-store-db',
