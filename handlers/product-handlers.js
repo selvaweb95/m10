@@ -36,10 +36,6 @@ async function getProductById(id) {
 
 // create product 
 async function addProduct(body, files) {
-    // console.log(body);  // Other form fields
-    // console.log(files); // Uploaded files
-
-
     const imageArray = files.map(file => ({
         data: file.buffer,
         contentType: file.mimetype
@@ -61,8 +57,6 @@ async function addProduct(body, files) {
 
 // update product 
 async function updateProduct(id, body, files) {
-    console.log('updateProduct', body);  // Other form fields
-    console.log('updateProduct files', files); // Uploaded files
     const imageArray = files.map(file => ({
         data: file.buffer,
         contentType: file.mimetype
@@ -72,8 +66,6 @@ async function updateProduct(id, body, files) {
         images: imageArray
     }
     const product = await productDB.findByIdAndUpdate(id, datas, { new: true });
-    console.log('update finaly result', product);
-
     return product
 }
 
@@ -159,7 +151,6 @@ async function getProductForListing(searchProduct, categoryId, pageNum, pageSize
         })
         .skip((+pageNum - 1) * +pageSize)
         .limit(+pageSize);
-        // console.log('product list quieries',products);
          // Transform images to base64 only
      const formattedProducts = products.map(product => ({
         ...product._doc,  // Spread other product properties

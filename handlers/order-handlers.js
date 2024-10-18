@@ -1,8 +1,6 @@
 const orderDB= require('../db/order');
 
 async function addOrder(userId,order) {
-    console.log(userId,order);
-
    const orders= new orderDB({
         ...order,
         userId:userId,

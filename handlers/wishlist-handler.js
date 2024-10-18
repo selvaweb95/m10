@@ -1,7 +1,6 @@
 const wishlistDB= require('../db/wishlist');
 
 async function addToWishlist(userId,productsId){
-    // console.log(userId,productsId);
     const wishlist= new wishlistDB({
         userId:userId,
         productId:productsId

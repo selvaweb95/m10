@@ -20,7 +20,6 @@ router.get('',async (req,res)=>{
 
 router.get('/:id',async (req,res)=>{
     const id = req.params.id;
-    // console.log(id);
     try{
         const category=await categorySchema.findById(id);
         if(!category){
@@ -38,7 +37,6 @@ router.get('/:id',async (req,res)=>{
 // create 
 router.post('',async (req,res)=>{
     const body=req.body;
-    // console.log(body)
     const categores=categorySchema({name: body.name})
     await categores.save();
     res.send(categores.toObject()); // The .toObject() method is used in Mongoose to convert a Mongoose document into a plain JavaScript object.
@@ -48,7 +46,6 @@ router.post('',async (req,res)=>{
 router.put('/:id',async (req,res)=>{
     const id=req.params.id;
     const body=req.body;
-    // console.log('errs1');
     try{
         const category= await categorySchema.findByIdAndUpdate(id,body,{new:true});
         if(!category){

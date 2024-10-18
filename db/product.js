@@ -19,6 +19,11 @@ const productSchema = new Schema({
         required: true, // Required field
         min: 0 // Minimum value
     },
+    margin: { 
+        type: Number, 
+        required: true, // Required field
+        min: 0 // Minimum value
+    },
     discount: { 
         type: Number, 
         default: 0 // Default value

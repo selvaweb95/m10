@@ -3,7 +3,6 @@ const user = require("../db/user");
 
 function verifyToken(req,res,next){
     const token = req.header('Authorization');
-    // console.log('header token',req.header);
     
     if(!token){
       return  res.status(401).send({
@@ -12,7 +11,6 @@ function verifyToken(req,res,next){
     }
     try{
         const decode=jwt.verify(token,"seceret");
-        // console.log(decode);
         req.user=decode;
         next()
     }catch(err){

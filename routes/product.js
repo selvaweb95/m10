@@ -9,7 +9,6 @@ const productDB = require('../db/product')
 router.get('', async (req, res) => {
   try {
     const products = await getAllProducts();
-    // console.log('render products',products);
     
     res.status(200).send(products);
   } catch (err) {
@@ -38,8 +37,6 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 // Add new product
 router.post('', upload.array('images', 10), async (req, res) => {
-  console.log('Files uploaded:', req.files); // Check uploaded files
-  console.log('Body:', req.body);
   try {
     // Pass the body and the files to the addProduct function
     const product = await addProduct(req.body, req.files);
@@ -62,8 +59,6 @@ router.put('/:id',upload.array('images', 10), async (req, res) => {
   const id = req.params.id;
   const body = req.body;
   const files=req.files;
-  console.log('Files uploaded:', req.files); // Check uploaded files
-  console.log('Body:', req.body);
   try {
     const product = await updateProduct(id, body,files);
     if (!product) {

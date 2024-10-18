@@ -2,8 +2,6 @@ const cartDB=require('../db/cart');
 
 async function getCartlist(userId) {
     const cart= await cartDB.find({userId:userId}).populate('productId');
-    console.log('get cat items',cart);
-    
     return cart.map(val => {
       const formatImage = {
         ...val.productId._doc,
@@ -17,7 +15,6 @@ async function getCartlist(userId) {
 }
 
 async function addToCart(userId,productId,quantity) {
-  // console.log('bbb',userId,productId,quantity);
   const product=await cartDB.findOne({userId:userId,productId:productId});  
   if(product){
     const productCartUpdated= await cartDB.findByIdAndUpdate(product._id,{

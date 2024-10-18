@@ -87,8 +87,6 @@ router.get('/carts/:id',async (req,res)=>{
     if(userId){
         try{
             const carts=await getCartlist(userId);
-            console.log('return list', carts);
-            
             if(!carts){
                 res.status(404).send({message:'user cart not avilable'})
             }
